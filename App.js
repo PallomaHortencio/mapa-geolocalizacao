@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
@@ -9,18 +10,19 @@ export default function App() {
     longitudeDelta: 0.0421,
   };
 
-  const localizacao = {
+  const [localizacao, setLocalizacao] = useState({
     latitude: 26.357896,
     longitude: 127.783809,
     latitudeDelta: 0,
     longitudeDelta: 0,
-  };
+  });
 
   return (
     <>
       <StatusBar />
       <View style={estilos.container}>
         <MapView
+          onPress={""}
           style={estilos.mapa}
           initialRegion={regiaoInicial}
           liteMode={false} // somente android
