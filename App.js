@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 export default function App() {
   const regiaoInicial = {
@@ -7,6 +7,12 @@ export default function App() {
     longitude: -122.4324,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
+  };
+  const localizacao = {
+    latitude: 26.357896,
+    longitude: 127.783809,
+    latitudeDelta: 0,
+    longitudeDelta: 0,
   };
   return (
     <>
@@ -17,10 +23,19 @@ export default function App() {
           initialRegion={regiaoInicial}
           liteMode={true} // somente android
           mapType="hybrid"
-          userInterfaceStyle="light" // spmente ios
-          maxZoomLevel={15}
+          userInterfaceStyle="light" // somente ios
+          maxZoomLevel={20}
           minZoomLevel={2}
-        />
+        >
+          <Marker
+            draggable
+            coordinate={localizacao}
+            title="oie"
+            onPress={(event) => {
+              console.log(event.nativeEvent);
+            }}
+          />
+        </MapView>
       </View>
     </>
   );
