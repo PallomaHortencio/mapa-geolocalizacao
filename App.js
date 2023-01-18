@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from "react-native";
+import MapView from "react-native-maps";
 
 export default function App() {
+  const regiaoInicial = {
+    latitude: 42.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar />
+      <View style={estilos.container}>
+        <MapView style={estilos.mapa} initialRegion={regiaoInicial} />
+      </View>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
+const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  mapa: {
+    width: "100%",
+    height: "100%",
   },
 });
