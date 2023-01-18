@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
 export default function App() {
@@ -8,12 +8,14 @@ export default function App() {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
+
   const localizacao = {
     latitude: 26.357896,
     longitude: 127.783809,
     latitudeDelta: 0,
     longitudeDelta: 0,
   };
+
   return (
     <>
       <StatusBar />
@@ -21,7 +23,7 @@ export default function App() {
         <MapView
           style={estilos.mapa}
           initialRegion={regiaoInicial}
-          liteMode={true} // somente android
+          liteMode={false} // somente android
           mapType="hybrid"
           userInterfaceStyle="light" // somente ios
           maxZoomLevel={20}
@@ -34,7 +36,9 @@ export default function App() {
             onPress={(event) => {
               console.log(event.nativeEvent);
             }}
-          />
+          >
+            <Image source={require("./assets/ghost.png")} />
+          </Marker>
         </MapView>
       </View>
     </>
