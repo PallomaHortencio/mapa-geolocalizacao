@@ -7,3 +7,9 @@
 ### Instalação:
 
 `npx expo install react-native-maps`
+
+---
+
+## 02-mapview-com-outras-props
+
+**Documentação com todos os detalhes da biblioteca de mapas:** https://github.com/react-native-maps/react-native-maps
