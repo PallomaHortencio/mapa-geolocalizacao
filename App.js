@@ -63,7 +63,7 @@ export default function App() {
           style={estilos.mapa}
           region={localizacao ?? regiaoInicial}
           liteMode={false}
-          mapType="standard"
+          mapType="hybrid"
         >
           {localizacao && (
             <Marker
