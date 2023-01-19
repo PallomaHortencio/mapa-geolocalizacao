@@ -35,21 +35,23 @@ export default function App() {
         <MapView
           onPress={marcarLocal}
           style={estilos.mapa}
-          initialRegion={regiaoInicial}
+          region={localizacao ?? regiaoInicial}
           liteMode={false} // somente android
           mapType="hybrid"
           userInterfaceStyle="light" // somente ios
           maxZoomLevel={20}
           minZoomLevel={2}
         >
-          <Marker
-            draggable
-            coordinate={localizacao}
-            title="oie"
-            onPress={(e) => console.log(e.nativeEvent)}
-          >
-            <Image source={require("./assets/ghost.png")} />
-          </Marker>
+          {localizacao && (
+            <Marker
+              draggable
+              coordinate={localizacao}
+              title="oie"
+              onPress={(e) => console.log(e.nativeEvent)}
+            >
+              <Image source={require("./assets/ghost.png")} />
+            </Marker>
+          )}
         </MapView>
       </View>
     </>
