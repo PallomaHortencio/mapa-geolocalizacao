@@ -4,10 +4,12 @@ import MapView, { Marker } from "react-native-maps";
 
 export default function App() {
   const regiaoInicial = {
-    latitude: 42.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
+    latitude: -23.533773,
+    longitude: -46.65529,
+    // latitudeDelta: 0.0922,
+    // longitudeDelta: 0.0421
+    latitudeDelta: 10,
+    longitudeDelta: 10,
   };
 
   const [localizacao, setLocalizacao] = useState({
@@ -17,12 +19,21 @@ export default function App() {
     longitudeDelta: 0,
   });
 
+  const marcarLocal = (event) => {
+    setLocalizacao({
+      ...localizacao,
+      latitude: event.nativeEvent.coordinate.latitude,
+      longitude: event.nativeEvent.coordinate.longitude,
+    });
+    console.log(localizacao);
+  };
+
   return (
     <>
       <StatusBar />
       <View style={estilos.container}>
         <MapView
-          onPress={""}
+          onPress={marcarLocal}
           style={estilos.mapa}
           initialRegion={regiaoInicial}
           liteMode={false} // somente android
@@ -35,9 +46,7 @@ export default function App() {
             draggable
             coordinate={localizacao}
             title="oie"
-            onPress={(event) => {
-              console.log(event.nativeEvent);
-            }}
+            onPress={(e) => console.log(e.nativeEvent)}
           >
             <Image source={require("./assets/ghost.png")} />
           </Marker>
